@@ -8,14 +8,7 @@ module.exports = function(sequelize, DataTypes) {
             type: DataTypes.BOOLEAN,
             defaultValue: false
         }
-    }, {
-        paranoid: true,
-        tableName: "burgers",
-        classMethods: {
-            associate: function(models) {
-                Burger.belongsTo(models.Customer);
-            }
-        }
+    
     });
     return Burger;
 };

@@ -1,92 +1,82 @@
+<!-- START HTML -->
 <main class="container">
 
-    <!--EAT-DA-BURGER HEADER-->
+<!-- HEADER -->
     <div class="row">
         <div class="col-lg-12">
             <div class="row">
-                <h1>Eat-Da-Burger!</h1>
+                <h1>EAT DA BURGER!</h1>
             </div>
         </div>
     </div>
-    <!--END OF EAT-DA-BURGER HEADER-->
 
-    <!--EAT-DA-BURGER IMAGE-->
+<!-- BURGER IMAGE -->
     <div class="row">
         <img class="center-block" src="/assets/img/burgers.png" alt="Burgers" style="max-width: 300px">
     </div>
-    <!--END OF EAT-DA-BURGER IMAGE-->
 
-    <!--BURGERS-->
+<!-- ORDERED BURGERS -->
     <div class="row" id="burgersDiv">
-
-        <!--BURGERS TO DEVOUR-->
         <div class="col-lg-4" id="burgerList">
-            <ul>
+            <table>
                 {{#each burgers}}
                     {{#unless this.devoured}}
-                        <li>
+                        <tr><td>
+                            <div style="margin-right: 10px; font-size: 19px; font-weight: 400; background-color: #FFF; padding:5px 8px;">
                             {{this.burger_name}}
+                            </div>
+                            </td><td>
                             <form action="burgers/update/devour/{{this.id}}?_method=PUT" method="POST">
-                                <input type="text" name="customer" placeholder="Customer">
-                                <br>
                                 <input type="hidden" name="devoured" value="1" >
-                                <button type="submit" class="btn btn-info btn-xs" id="devourBtn">Devour It! <span class="glyphicon glyphicon-cutlery"></span></button>
+                                <button type="submit" class="btn btn-info btn-xs" id="devourBtn">EAT IT</span></button>
                             </form>
-                            <form action="burgers/delete/{{this.id}}?_method=DELETE" method="POST">
-                                <button type="submit" class="btn btn-danger btn-xs" id="devourBtn">Trash It! <span class="	glyphicon glyphicon-remove-circle"></span></button>
-                            </form>
-                        </li>
+                            </td></tr>
                     {{/unless}}
                 {{/each}}
-            </ul>
+            </table>
         </div>
-        <!--END OF BURGERS TO DEVOUR-->
 
-        <!--BURGER INPUT FORM-->
+<!-- ORDER FORM -->
         <div class="col-lg-4">
             <div class="row center-block">
                 <form class="form-horizontal" action="burgers/create" method="POST">
                     <fieldset>
-                        <h2>Order Up!</h2>
+                        <h2>ORDER YOUR BURGER HERE:</h2>
                         <div class="form-group">
                             <div class="col-lg-12">
-                                <input name="burgerName" type="text" placeholder="Burger Name" class="form-control">
-                                <span class="help-block">Enter your name and the burger you want to eat and click the "Submit" button.</span>
+                                <input name="burgerName" type="text" placeholder="What would you like:" class="form-control">
+                                <span class="help-block">Enter the name of the burger you want to order and click "SUBMIT"</span>
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="col-lg-12">
-                                <button type="submit" class="btn btn-primary btn-sm">Submit</button>
+                                <button type="submit" class="btn btn-primary btn-sm">PLACE ORDER</button>
                             </div>
                         </div>
                     </fieldset>
                 </form>
             </div>
         </div>
-        <!--END OF BURGER INPUT FORM-->
 
-
-        <!--DEVOURED BURGERS-->
-        
-        <div class="col-lg-4" id="devouredBurgers">
-            <ul>
+<!-- DEVOURED BURGERS -->
+<div class="col-lg-4" id="devouredBurgers">
+            
+            
+              <table>
                 {{#each burgers}}
                     {{#if this.devoured}}
-                        <li>
-                            {{this.burger_name}} (devoured by {{this.Customer.customer_name}})
-                            <form action="burgers/update/return/{{this.id}}?_method=PUT" method="POST">
-                                <input type="hidden" name="devoured" value="0">
-                                <button type="submit" class="btn btn-warning btn-xs" id="devourBtn"><span class="glyphicon glyphicon-backward"></span> Send It Back!</button>
+                        <tr><td>
+                            <div style="margin: 0px 10px 10px 0px; font-size: 19px; font-weight: 400; background-color: #FFF; padding:8px 8px;">
+                               {{this.burger_name}}
+                            </div>
+                            </td><td>
+                             <form action="burgers/delete/{{this.id}}?_method=DELETE" method="POST">
+                                <button type="submit" class="btn btn-danger btn-xs" id="devourBtn">DELETE</button>
                             </form>
-                            <form action="burgers/delete/{{this.id}}?_method=DELETE" method="POST">
-                                <button type="submit" class="btn btn-danger btn-xs" id="devourBtn"><span class="	glyphicon glyphicon-remove-circle"></span> Trash It!</button>
-                            </form>
-                        </li>
-                    {{/if}}
+                            </td></tr>
+                     {{/if}}
                 {{/each}}
-            </ul>
+                </table>
         </div>
-        <!--END OF DEVOURED BURGERS-->
     </div>
-    <!--END OF BURGERS-->
 </main>
