@@ -16,7 +16,7 @@
 "production": {
     "username": "tifonezkwvpiyeyo",
     "password": "esorayh85i80sbad",
-    "database": "burgers_db",
+    "database": "ko86t9azcob3a2f9",
     "host": "ko86t9azcob3a2f9.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
     "use_env_variable": "JAWSDB_URL",
     "dialect": "mysql"
